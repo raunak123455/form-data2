@@ -13,6 +13,16 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Landing route
+app.get("/", (req, res) => {
+  res.json({
+    message: "Server is running",
+    status: "active",
+    time: new Date().toISOString(),
+    environment: process.env.NODE_ENV || "development",
+  });
+});
+
 // Routes
 app.use("/api/products", productRoutes);
 
